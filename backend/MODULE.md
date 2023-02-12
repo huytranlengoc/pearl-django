@@ -1,0 +1,5 @@
+djangorestframework
+django-debug-toolbar
+django_extensions
+celery
+flower
