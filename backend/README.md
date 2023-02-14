@@ -1,43 +1,44 @@
 # Backend structure
 ```python
-├── README.md
-├── apps
-│   ├── accounts
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── managers
-│   │   ├── migrations
-│   │   ├── models
-│   │   │   ├── user.py
-│   │   │   ├── ....
-│   │   ├── tests.py
-│   │   └── views.py
-│   ├── api
-│   │   ├── ... # for api
-│   └── common
-│       ├── ... # for common models, settings
-│   └── ... # for another apps
 ├── core
-│   ├── asgi.py
-│   ├── settings
+│   ├── settings # environment settings
 │   │   ├── base.py
 │   │   ├── development.py
 │   │   ├── production.py
 │   │   └── staging.py
+│   ├── asgi.py
 │   ├── urls.py
 │   └── wsgi.py
-├── manage.py
+├── apps
+│   │── common # common settings
+│   │   ├── models
+│   │   │   └── base.py # common fields
+│   ├── accounts
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── managers
+│   │   │   └── user.py
+│   │   ├── migrations
+│   │   ├── models
+│   │   │   └── user.py # customize user
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── api
+│   │   └── ... # for api
+│   └──── ... # for another apps
 ├── requirements
 │   ├── base.txt
 │   ├── dev.txt
 │   ├── production.txt
 │   └── test.txt
-└── requirements.txt
+│── requirements.txt
+├── manage.py
+└── README.md
 ```
 
 # Configuration
 
-# How to run
+# How to runz
 
 ## Python
 ```python
