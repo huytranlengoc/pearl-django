@@ -76,3 +76,36 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 ```
+
+## Implemt authentication by djangorestframework-simplejwt
+```python
+pip install djangorestframework-simplejwt==5.2.2
+```
+
+Add settings
+```python
+SIMPLE_JWT = {
+    "USER_ID_FIELD": "uuid",
+}
+```
+
+
+## Implement CORS
+```python
+pip install django-cors-headers
+```
+
+Add settings:
+```python
+INSTALLED_APPS = [
+    ....
+    'corsheaders',
+    ...
+]
+
+MIDDLEWARE = [
+    'corsheaders,middleware.CorsMiddleware', # add this one
+    'django.middleware.security.SecurityMiddleware', # remaining settings
+    ....
+]
+```

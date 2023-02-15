@@ -38,7 +38,7 @@
 
 # Configuration
 
-# How to runz
+# How to run
 
 ## Python
 ```python
