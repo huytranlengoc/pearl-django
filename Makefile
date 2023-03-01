@@ -1,3 +1,10 @@
+# Development tools
+iext:
+	cat tools/extensions.txt | xargs -I {} code --install-extension '{}'
+eext:
+	code --list-extensions >  tools/extensions.txt
+
+# API
 migrations:
 	backend/manage.py makemigrations
 
