@@ -14,8 +14,9 @@
                       <CIcon icon="cil-user" />
                     </CInputGroupText>
                     <CFormInput
-                      placeholder="Username"
-                      autocomplete="username"
+                      placeholder="Email"
+                      autocomplete="email"
+                      v-model="email"
                     />
                   </CInputGroup>
                   <CInputGroup class="mb-4">
@@ -26,11 +27,14 @@
                       type="password"
                       placeholder="Password"
                       autocomplete="current-password"
+                      v-model="password"
                     />
                   </CInputGroup>
                   <CRow>
                     <CCol :xs="6">
-                      <CButton color="primary" class="px-4"> Login </CButton>
+                      <CButton color="primary" class="px-4" @click="login">
+                        Login
+                      </CButton>
                     </CCol>
                     <CCol :xs="6" class="text-right">
                       <CButton color="link" class="px-0">
@@ -64,7 +68,44 @@
 </template>
 
 <script>
+/* eslint-disable */
+import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
+
+const API_BASE = "http://127.0.0.1:8000"
+const API_TOKEN = `${API_BASE}/api/token/`
+
 export default {
   name: 'Login',
+  data() {
+    return {
+      email: 'admin@example.com',
+      password: 'admin',
+      error: '',
+    }
+  },
+  computed: {
+    ...mapGetters("auth", {
+      getLoginApiStatus: "getLoginApiStatus",
+    }),
+  },
+  methods: {
+    ...mapActions("auth", {
+      actionLoginApi: "loginApi",
+    }),
+    async login() {
+      console.log(this.email, this.password);
+      const payload = {
+        email: this.email,
+        password: this.password,
+      }
+      await this.actionLoginApi(payload);
+      if (this.getLoginApiStatus == "success") {
+        this.$router.push("/dashboard");
+      } else {
+        alert("failed")
+      }
+    }
+  }
 }
 </script>

@@ -19,3 +19,7 @@ shell:
 
 preall:
 	pre-commit run --all-files
+
+# APP
+runui:
+	cd frontend && npm run serve
